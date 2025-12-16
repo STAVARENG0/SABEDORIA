@@ -464,11 +464,41 @@
       renderizarProdutos(produtosFiltrados);
     }
 
+    
+    function normalizarProduto(bruto){
+      if(!bruto || typeof bruto !== "object") return null;
+      const id = bruto.id != null ? bruto.id : Date.now() + Math.random();
+      const precoBruto = bruto.preco ?? bruto.price ?? 0;
+      const precoNum = Number(precoBruto) || 0;
+      const imagem =
+        bruto.imagem ||
+        bruto.image ||
+        (Array.isArray(bruto.gallery) && bruto.gallery.length ? bruto.gallery[0] : "");
+      const nome = bruto.nome || bruto.title || "Produto sem nome";
+      const descricao = bruto.descricaoCurta || bruto.description || "";
+      const detalhes = bruto.detalhes || "";
+      return {
+        id,
+        nome,
+        preco: precoNum,
+        imagem,
+        descricaoCurta: descricao,
+        detalhes
+      };
+    }
+
     function carregarProdutosDoJson(){
       fetch("produtos.json")
         .then(resp => resp.json())
         .then(data => {
-          produtos = data;
+          if(!Array.isArray(data)){
+            console.error("produtos.json não é um array válido.");
+            produtos = [];
+          } else {
+            produtos = data
+              .map(normalizarProduto)
+              .filter(Boolean);
+          }
           produtosFiltrados = [...produtos];
           renderizarProdutos(produtosFiltrados);
         })
@@ -478,14 +508,7 @@
           grade.innerHTML = "<p style='font-size:14px;color:#7c6f63;'>Não foi possível carregar os produtos. Verifique o arquivo produtos.json.</p>";
         });
     }
-
-    // ========= CARRINHO =========
-    function atualizarIconeCarrinho(){
-      const qtd = carrinho.reduce((s, item) => s + item.quantidade, 0);
-      document.getElementById("icone-quantidade").textContent = qtd;
-    }
-
-    function adicionarAoCarrinho(idProduto){
+icionarAoCarrinho(idProduto){
       const produto = produtos.find(p => p.id === idProduto);
       if (!produto) return;
 
