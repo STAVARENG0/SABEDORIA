@@ -1,19 +1,20 @@
 [
   {
-    "id": 1,
-    "nome": "Faraó Guardião da Sabedoria",
-    "preco": 189.9,
-    "imagem": "produto1.jpg",
-    "descricaoCurta": "Escultura em estilo egípcio, acabamento envelhecido.",
-    "detalhes": "Peça em resina premium, 25cm de altura."
-  },
-  {
     "id": 2,
     "nome": "Máscara Tribal do Conhecimento",
     "preco": 139.9,
     "imagem": "produto2.jpg",
     "descricaoCurta": "Máscara decorativa inspirada em culturas ancestrais.",
-    "detalhes": "Ideal para paredes ou prateleiras."
+    "detalhes": "Ideal para paredes ou prateleiras.",
+    "title": "Untitled",
+    "description": "",
+    "category": "uncategorized",
+    "price": 0,
+    "stock": 0,
+    "gallery": [],
+    "image": "",
+    "createdAt": 1765927364764,
+    "status": "published"
   },
   {
     "id": 3,
@@ -21,7 +22,16 @@
     "preco": 89.9,
     "imagem": "produto3.jpg",
     "descricaoCurta": "Quadro pequeno com símbolo de proteção egípcio.",
-    "detalhes": "Perfeito para entradas ou escritórios."
+    "detalhes": "Perfeito para entradas ou escritórios.",
+    "title": "Untitled",
+    "description": "",
+    "category": "uncategorized",
+    "price": 0,
+    "stock": 0,
+    "gallery": [],
+    "image": "",
+    "createdAt": 1765927364764,
+    "status": "published"
   },
   {
     "id": 4,
@@ -29,6 +39,15 @@
     "preco": 159.9,
     "imagem": "produto4.jpg",
     "descricaoCurta": "Totem artesanal que mistura elementos maias e astecas.",
-    "detalhes": "Peça única, quantidade limitada."
+    "detalhes": "Peça única, quantidade limitada.",
+    "title": "Untitled",
+    "description": "",
+    "category": "uncategorized",
+    "price": 0,
+    "stock": 0,
+    "gallery": [],
+    "image": "",
+    "createdAt": 1765927364764,
+    "status": "published"
   }
 ]
