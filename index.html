@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Artesanato Online — Loja</title>
+  <meta name="description" content="Loja Artesanato Online — peças de artesanato exclusivas." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg-1:#f6f1e7;
+      --bg-2:#f3e9d8;
+      --text:#2b2723;
+      --muted:#7c6f63;
+      --accent:#d68d28;
+      --accent-2:#f0b43b;
+      --accent-dark:#9a5b18;
+      --card:#ffffff;
+      --border:#e0d5c2;
+      --shadow:0 10px 26px rgba(0,0,0,.15);
+      --radius:20px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      min-height:100vh;
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:linear-gradient(180deg,var(--bg-1),var(--bg-2));
+      color:var(--text);
+    }
+    .container{
+      max-width:1180px;
+      margin:0 auto;
+      padding:22px 18px 40px;
+    }
+
+    header{
+      text-align:center;
+      margin-bottom:24px;
+    }
+    .brand-logo{
+      display:block;
+      margin:0 auto 8px;
+      width:100%;
+      max-width:520px;
+      height:auto;
+    }
+    .subtitle-cloud{
+      display:inline-block;
+      margin-top:4px;
+      padding:10px 18px;
+      border-radius:999px;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(255,255,255,.8), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(255,255,255,.7), transparent 55%),
+        #f0dfc4;
+      border:1px solid rgba(190,146,75,.6);
+      box-shadow:0 12px 30px rgba(0,0,0,.18);
+      font-size:14px;
+      font-weight:600;
+      color:#5a401a;
+    }
+
+    .header-row{
+      margin-top:16px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+    }
+    .welcome-text{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.28em;
+      font-weight:700;
+      color:#8a744c;
+    }
+    .search-box{
+      display:flex;
+      gap:6px;
+      width:100%;
+      max-width:420px;
+      justify-content:center;
+    }
+    .search-box input{
+      flex:1;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      font-size:13px;
+      outline:none;
+    }
+    .search-box button{
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:var(--card);
+      font-size:13px;
+      font-weight:600;
+      cursor:pointer;
+    }
+    .search-box button:hover{
+      filter:brightness(1.04);
+    }
+
+    /* GRADE DE PRODUTOS */
+    .shop-section{
+      margin-top:26px;
+    }
+    .shop-header h2{
+      font-size:24px;
+      font-weight:700;
+      text-align:left;
+    }
+    .shop-header p{
+      margin-top:4px;
+      font-size:13px;
+      color:var(--muted);
+      max-width:520px;
+    }
+    .product-grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+      gap:18px;
+    }
+    .product-card{
+      background:var(--card);
+      border-radius:var(--radius);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    }
+    .product-image{
+      width:100%;
+      aspect-ratio:4/3;
+      object-fit:cover;
+      display:block;
+      background:#f7f1e4;
+    }
+    .product-body{
+      padding:12px 14px 10px;
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    .product-title{
+      font-size:16px;
+      font-weight:700;
+    }
+    .product-desc{
+      font-size:13px;
+      color:var(--muted);
+    }
+    .product-meta{
+      font-size:12px;
+      color:var(--muted);
+    }
+    .product-price{
+      margin-top:4px;
+      font-weight:800;
+      font-size:16px;
+      color:var(--accent-dark);
+    }
+    .product-footer{
+      padding:10px 14px 12px;
+      border-top:1px dashed var(--border);
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      width:100%;
+      padding:10px 14px;
+      border-radius:999px;
+      border:none;
+      font-size:14px;
+      font-weight:700;
+      cursor:pointer;
+      background:linear-gradient(120deg,var(--accent),var(--accent-2));
+      color:#3b2206;
+      box-shadow:0 8px 22px rgba(198,129,41,.4);
+      text-decoration:none;
+    }
+    .btn:hover{
+      filter:brightness(1.05);
+      transform:translateY(-1px);
+    }
+    .btn:active{
+      transform:translateY(0);
+    }
+
+    /* FLOATING CART BUTTON */
+    .floating-cart{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      background:linear-gradient(180deg,var(--accent-2),var(--accent));
+      box-shadow:0 10px 28px rgba(0,0,0,.35);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:2px;
+      cursor:pointer;
+      z-index:2000;
+      border:none;
+    }
+    .floating-cart .icon{
+      font-size:26px;
+      line-height:1;
+    }
+    .floating-cart .qty{
+      font-size:12px;
+      font-weight:800;
+    }
+
+    /* MODAL DO CARRINHO */
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.45);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      z-index:3000;
+    }
+    .modal.is-open{
+      display:flex;
+    }
+    .modal-content{
+      width:100%;
+      max-width:520px;
+      background:var(--card);
+      border-radius:18px;
+      box-shadow:0 22px 60px rgba(0,0,0,.5);
+      padding:18px 18px 16px;
+      position:relative;
+      border:1px solid var(--border);
+    }
+    .modal h2{
+      margin-bottom:4px;
+      font-size:20px;
+    }
+    .modal-close{
+      position:absolute;
+      top:10px;
+      right:10px;
+      width:26px;
+      height:26px;
+      border-radius:50%;
+      border:none;
+      background:#c14a2f;
+      color:#fff;
+      font-weight:900;
+      cursor:pointer;
+    }
+    .cart-items{
+      margin:10px 0;
+      max-height:260px;
+      overflow:auto;
+    }
+    .cart-item{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:6px 0;
+      border-bottom:1px dashed var(--border);
+      font-size:13px;
+    }
+    .cart-item:last-child{
+      border-bottom:none;
+    }
+    .cart-left{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .cart-thumb{
+      width:44px;
+      height:44px;
+      border-radius:10px;
+      object-fit:cover;
+      background:#f5ebd8;
+      border:1px solid var(--border);
+    }
+    .cart-qty-controls{
+      display:flex;
+      align-items:center;
+      gap:4px;
+    }
+    .cart-qty-controls button{
+      width:22px;
+      height:22px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#f7efe1;
+      cursor:pointer;
+      font-weight:700;
+    }
+    .cart-total-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin:8px 0 10px;
+      font-weight:700;
+    }
+    .whatsapp-note{
+      font-size:11px;
+      color:#7c6f63;
+      margin-bottom:6px;
+    }
+
+    footer{
+      margin-top:32px;
+      padding-top:16px;
+      border-top:1px solid var(--border);
+      text-align:center;
+      font-size:12px;
+      color:#7c6f63;
+    }
+
+    @media (max-width:700px){
+      .shop-header h2{
+        text-align:center;
+      }
+      .shop-header p{
+        margin-left:auto;
+        margin-right:auto;
+        text-align:center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <!-- LOGO: coloque o arquivo "artesanato online.png" na mesma pasta deste HTML -->
+      <img src="artesanato online.png" alt="Artesanato Online" class="brand-logo" />
+
+      <div class="subtitle-cloud">
+        Peças de artesanato exclusivas
+      </div>
+
+      <div class="header-row">
+        <div class="welcome-text">BEM-VINDO À LOJA</div>
+        <form class="search-box" onsubmit="event.preventDefault(); filtrarProdutos();">
+          <input type="text" id="busca" placeholder="Buscar por peça ou tema..." />
+          <button type="button" onclick="filtrarProdutos()">Buscar</button>
+        </form>
+      </div>
+    </header>
+
+    <main>
+      <section class="shop-section" aria-labelledby="titulo-loja">
+        <div class="shop-header">
+          <h2 id="titulo-loja">Coleção Artesanato Online</h2>
+          <p>Os produtos aparecem aqui assim que o arquivo <strong>produtos.json</strong> é carregado.</p>
+        </div>
+
+        <div class="product-grid" id="grade-produtos">
+          <!-- A grade é preenchida pelo JavaScript ao ler o JSON -->
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="ano"></span> Artesanato Online — todos os direitos reservados.
+    </footer>
+  </div>
+
+  <!-- BOTÃO FLUTUANTE DO CARRINHO -->
+  <button class="floating-cart" type="button" onclick="abrirCarrinho()" aria-label="Abrir carrinho">
+    <div class="icon">🛒</div>
+    <div class="qty" id="icone-quantidade">0</div>
+  </button>
+
+  <!-- MODAL DO CARRINHO -->
+  <div class="modal" id="modal-carrinho" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="titulo-carrinho">
+      <button class="modal-close" type="button" onclick="fecharCarrinho()">×</button>
+      <h2 id="titulo-carrinho">Seu carrinho</h2>
+      <p class="whatsapp-note">O fechamento do pedido é feito pelo WhatsApp: nenhuma cobrança é feita aqui no site.</p>
+
+      <div class="cart-items" id="itens-carrinho">
+        <!-- itens via JS -->
+      </div>
+
+      <div class="cart-total-row">
+        <span>Total:</span>
+        <span id="total-carrinho">R$ 0,00</span>
+      </div>
+
+      <button class="btn" type="button" onclick="comprarAgoraWhatsApp()">
+        COMPRAR AGORA
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // ========= CONFIGURAÇÃO BÁSICA =========
+    const NUMERO_WHATSAPP = "353811954824"; // seu número, só dígitos, sem + e sem espaços
+
+    let produtos = [];
+    let produtosFiltrados = [];
+    let carrinho = [];
+
+    function formatarPreco(valor){
+      return "R$ " + valor.toFixed(2).replace(".", ",");
+    }
+
+    function renderizarProdutos(lista){
+      const grade = document.getElementById("grade-produtos");
+      grade.innerHTML = "";
+
+      if (!lista.length){
+        grade.innerHTML = "<p style='font-size:14px;color:#7c6f63;'>Nenhum produto encontrado ou JSON não carregado.</p>";
+        return;
+      }
+
+      lista.forEach((p) => {
+        const card = document.createElement("article");
+        card.className = "product-card";
+        card.innerHTML = `
+          <img src="${p.imagem}" alt="${p.nome}" class="product-image" />
+          <div class="product-body">
+            <h3 class="product-title">${p.nome}</h3>
+            <p class="product-desc">${p.descricaoCurta || ""}</p>
+            <p class="product-meta">${p.detalhes || ""}</p>
+            <p class="product-price">${formatarPreco(p.preco)}</p>
+          </div>
+          <div class="product-footer">
+            <button class="btn" type="button" onclick="adicionarAoCarrinho(${p.id})">
+              Adicionar ao carrinho
+            </button>
+          </div>
+        `;
+        grade.appendChild(card);
+      });
+    }
+
+    function filtrarProdutos(){
+      const termo = document.getElementById("busca").value.trim().toLowerCase();
+      if (!termo){
+        produtosFiltrados = [...produtos];
+      } else {
+        produtosFiltrados = produtos.filter(p =>
+          p.nome.toLowerCase().includes(termo) ||
+          (p.descricaoCurta || "").toLowerCase().includes(termo)
+        );
+      }
+      renderizarProdutos(produtosFiltrados);
+    }
+
+    function carregarProdutosDoJson(){
+      fetch("produtos.json")
+        .then(resp => resp.json())
+        .then(data => {
+          produtos = data;
+          produtosFiltrados = [...produtos];
+          renderizarProdutos(produtosFiltrados);
+        })
+        .catch(err => {
+          console.error("Erro ao carregar produtos.json", err);
+          const grade = document.getElementById("grade-produtos");
+          grade.innerHTML = "<p style='font-size:14px;color:#7c6f63;'>Não foi possível carregar os produtos. Verifique o arquivo produtos.json.</p>";
+        });
+    }
+
+    // ========= CARRINHO =========
+    function atualizarIconeCarrinho(){
+      const qtd = carrinho.reduce((s, item) => s + item.quantidade, 0);
+      document.getElementById("icone-quantidade").textContent = qtd;
+    }
+
+    function adicionarAoCarrinho(idProduto){
+      const produto = produtos.find(p => p.id === idProduto);
+      if (!produto) return;
+
+      const existente = carrinho.find(item => item.id === idProduto);
+      if (existente){
+        existente.quantidade += 1;
+      } else {
+        carrinho.push({
+          id: produto.id,
+          nome: produto.nome,
+          preco: produto.preco,
+          imagem: produto.imagem,
+          quantidade: 1
+        });
+      }
+      atualizarIconeCarrinho();
+    }
+
+    function alterarQuantidade(idProduto, delta){
+      const item = carrinho.find(i => i.id === idProduto);
+      if (!item) return;
+      item.quantidade += delta;
+      if (item.quantidade <= 0){
+        carrinho = carrinho.filter(i => i.id !== idProduto);
+      }
+      atualizarIconeCarrinho();
+      renderizarCarrinho();
+    }
+
+    function calcularTotal(){
+      return carrinho.reduce((s, item) => s + item.preco * item.quantidade, 0);
+    }
+
+    function renderizarCarrinho(){
+      const container = document.getElementById("itens-carrinho");
+      const totalEl = document.getElementById("total-carrinho");
+      container.innerHTML = "";
+
+      if (!carrinho.length){
+        container.innerHTML = "<p style='font-size:14px;color:#7c6f63;'>Seu carrinho está vazio.</p>";
+        totalEl.textContent = "R$ 0,00";
+        return;
+      }
+
+      carrinho.forEach(item => {
+        const linha = document.createElement("div");
+        linha.className = "cart-item";
+        linha.innerHTML = `
+          <div class="cart-left">
+            <img src="${item.imagem}" alt="${item.nome}" class="cart-thumb" />
+            <div>
+              <div style="font-weight:600;">${item.nome}</div>
+              <div style="font-size:12px;color:#7c6f63;">${formatarPreco(item.preco)}</div>
+            </div>
+          </div>
+          <div class="cart-qty-controls">
+            <button type="button" onclick="alterarQuantidade(${item.id}, -1)">−</button>
+            <span>${item.quantidade}</span>
+            <button type="button" onclick="alterarQuantidade(${item.id}, 1)">+</button>
+          </div>
+        `;
+        container.appendChild(linha);
+      });
+
+      totalEl.textContent = formatarPreco(calcularTotal());
+    }
+
+    function abrirCarrinho(){
+      renderizarCarrinho();
+      const modal = document.getElementById("modal-carrinho");
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function fecharCarrinho(){
+      const modal = document.getElementById("modal-carrinho");
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    // ========= WHATSAPP =========
+    function comprarAgoraWhatsApp(){
+      if (!carrinho.length){
+        alert("Seu carrinho está vazio.");
+        return;
+      }
+      const linhas = carrinho.map(item =>
+        `${item.quantidade}x ${item.nome} — ${formatarPreco(item.preco)}`
+      );
+      const mensagem =
+        "Eu vim para adquirir:%0A%0A" +
+        linhas.join("%0A");
+
+      const url = "https://wa.me/" + NUMERO_WHATSAPP + "?text=" + mensagem;
+      window.open(url, "_blank");
+    }
+
+    // ========= INIT =========
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("ano").textContent = new Date().getFullYear();
+      atualizarIconeCarrinho();
+      carregarProdutosDoJson();
+
+      // Fecha o modal clicando fora
+      document.getElementById("modal-carrinho").addEventListener("click", (e) => {
+        if (e.target.id === "modal-carrinho"){
+          fecharCarrinho();
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape"){
+          fecharCarrinho();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
