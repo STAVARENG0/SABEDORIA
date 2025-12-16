@@ -418,7 +418,8 @@
     let carrinho = [];
 
     function formatarPreco(valor){
-      return "R$ " + valor.toFixed(2).replace(".", ",");
+      const num = Number(valor || 0);
+      return "R$ " + num.toFixed(2).replace(".", ",");
     }
 
     function renderizarProdutos(lista){
@@ -457,17 +458,19 @@
         produtosFiltrados = [...produtos];
       } else {
         produtosFiltrados = produtos.filter(p =>
-          p.nome.toLowerCase().includes(termo) ||
+          (p.nome || "").toLowerCase().includes(termo) ||
           (p.descricaoCurta || "").toLowerCase().includes(termo)
         );
       }
       renderizarProdutos(produtosFiltrados);
     }
 
-    
+    // Normaliza tanto o formato do painel (title, price, image...)
+    // quanto o formato simples (nome, preco, imagem...)
     function normalizarProduto(bruto){
       if(!bruto || typeof bruto !== "object") return null;
-      const id = bruto.id != null ? bruto.id : Date.now() + Math.random();
+
+      const id = bruto.id != null ? bruto.id : (bruto.ID != null ? bruto.ID : Date.now() + Math.random());
       const precoBruto = bruto.preco ?? bruto.price ?? 0;
       const precoNum = Number(precoBruto) || 0;
       const imagem =
@@ -477,6 +480,7 @@
       const nome = bruto.nome || bruto.title || "Produto sem nome";
       const descricao = bruto.descricaoCurta || bruto.description || "";
       const detalhes = bruto.detalhes || "";
+
       return {
         id,
         nome,
@@ -488,16 +492,19 @@
     }
 
     function carregarProdutosDoJson(){
-      fetch("produtos.json")
-        .then(resp => resp.json())
+      fetch("produtos.json", { cache: "no-cache" })
+        .then(resp => {
+          if(!resp.ok){
+            throw new Error("HTTP " + resp.status);
+          }
+          return resp.json();
+        })
         .then(data => {
           if(!Array.isArray(data)){
             console.error("produtos.json não é um array válido.");
             produtos = [];
           } else {
-            produtos = data
-              .map(normalizarProduto)
-              .filter(Boolean);
+            produtos = data.map(normalizarProduto).filter(Boolean);
           }
           produtosFiltrados = [...produtos];
           renderizarProdutos(produtosFiltrados);
@@ -508,7 +515,14 @@
           grade.innerHTML = "<p style='font-size:14px;color:#7c6f63;'>Não foi possível carregar os produtos. Verifique o arquivo produtos.json.</p>";
         });
     }
-icionarAoCarrinho(idProduto){
+
+    // ========= CARRINHO =========
+    function atualizarIconeCarrinho(){
+      const qtd = carrinho.reduce((s, item) => s + item.quantidade, 0);
+      document.getElementById("icone-quantidade").textContent = qtd;
+    }
+
+    function adicionarAoCarrinho(idProduto){
       const produto = produtos.find(p => p.id === idProduto);
       if (!produto) return;
 
