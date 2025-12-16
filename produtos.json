@@ -1,22 +1,5 @@
 [
   {
-    "id": 2,
-    "nome": "Máscara Tribal do Conhecimento",
-    "preco": 139.9,
-    "imagem": "produto2.jpg",
-    "descricaoCurta": "Máscara decorativa inspirada em culturas ancestrais.",
-    "detalhes": "Ideal para paredes ou prateleiras.",
-    "title": "Untitled",
-    "description": "",
-    "category": "uncategorized",
-    "price": 0,
-    "stock": 0,
-    "gallery": [],
-    "image": "",
-    "createdAt": 1765927364764,
-    "status": "published"
-  },
-  {
     "id": 3,
     "nome": "Olho de Hórus — Proteção",
     "preco": 89.9,
