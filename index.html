@@ -136,13 +136,7 @@
       display:flex;
       flex-direction:column;
     }
-    .product-image{
-      width:100%;
-      aspect-ratio:4/3;
-      object-fit:cover;
-      display:block;
-      background:#f7f1e4;
-    }
+    .product-image{width:100%;aspect-ratio:4/3;object-fit:contain;display:block;background:#f7f1e4;padding:6px;}
     .product-body{
       padding:12px 14px 10px;
       flex:1;
@@ -322,6 +316,48 @@
       color:#7c6f63;
       margin-bottom:6px;
     }
+    .product-modal-main{
+      margin:10px 0;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .product-modal-image-main{
+      width:100%;
+      max-height:340px;
+      object-fit:contain;
+      background:#f7f1e4;
+      border-radius:12px;
+      border:1px solid var(--border);
+      padding:8px;
+    }
+    .product-modal-thumbs{
+      display:flex;
+      gap:8px;
+      overflow-x:auto;
+      padding-bottom:4px;
+    }
+    .product-modal-thumb{
+      width:70px;
+      height:70px;
+      flex:0 0 auto;
+      border-radius:10px;
+      border:1px solid var(--border);
+      object-fit:cover;
+      cursor:pointer;
+      background:#f5ebd8;
+    }
+    .product-modal-text{
+      font-size:13px;
+      color:#5c4b36;
+      margin:8px 0 12px;
+    }
+    .product-modal-price{
+      font-weight:700;
+      font-size:16px;
+      color:var(--accent-dark);
+      margin-top:4px;
+    }
 
     footer{
       margin-top:32px;
@@ -367,7 +403,6 @@
       <section class="shop-section" aria-labelledby="titulo-loja">
         <div class="shop-header">
           <h2 id="titulo-loja">Coleção Artesanato Online</h2>
-          <p>Os produtos aparecem aqui assim que o arquivo <strong>produtos.json</strong> é carregado.</p>
         </div>
 
         <div class="product-grid" id="grade-produtos">
@@ -409,6 +444,27 @@
     </div>
   </div>
 
+
+  <!-- MODAL DE DETALHES DO PRODUTO -->
+  <div class="modal" id="modal-produto" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="titulo-produto-modal">
+      <button class="modal-close" type="button" onclick="fecharModalProduto()">×</button>
+      <h2 id="titulo-produto-modal"></h2>
+      <p class="product-modal-price" id="preco-produto-modal"></p>
+      <div class="product-modal-main">
+        <img id="imagem-produto-principal" class="product-modal-image-main" src="" alt="" />
+        <div class="product-modal-thumbs" id="galeria-thumbs"></div>
+      </div>
+      <div class="product-modal-text">
+        <p id="descricao-produto-modal"></p>
+        <p id="detalhes-produto-modal"></p>
+      </div>
+      <button class="btn" type="button" onclick="adicionarDetalheAoCarrinho()">
+        Adicionar ao carrinho
+      </button>
+    </div>
+  </div>
+
   <script>
     // ========= CONFIGURAÇÃO BÁSICA =========
     const NUMERO_WHATSAPP = "353811954824"; // seu número, só dígitos, sem + e sem espaços
@@ -416,6 +472,7 @@
     let produtos = [];
     let produtosFiltrados = [];
     let carrinho = [];
+    let produtoDetalheAtual = null;
 
     function formatarPreco(valor){
       const num = Number(valor || 0);
@@ -435,9 +492,9 @@
         const card = document.createElement("article");
         card.className = "product-card";
         card.innerHTML = `
-          <img src="${p.imagem}" alt="${p.nome}" class="product-image" />
+          <img src="${p.imagem}" alt="${p.nome}" class="product-image" onclick="abrirDetalhesProduto(${p.id})" />
           <div class="product-body">
-            <h3 class="product-title">${p.nome}</h3>
+            <h3 class="product-title" onclick="abrirDetalhesProduto(${p.id})" style="cursor:pointer;">${p.nome}</h3>
             <p class="product-desc">${p.descricaoCurta || ""}</p>
             <p class="product-meta">${p.detalhes || ""}</p>
             <p class="product-price">${formatarPreco(p.preco)}</p>
@@ -465,7 +522,7 @@
       renderizarProdutos(produtosFiltrados);
     }
 
-    // Normaliza tanto o formato do painel (title, price, image...)
+    // Normaliza tanto o formato do painel (title, price, image, gallery...)
     // quanto o formato simples (nome, preco, imagem...)
     function normalizarProduto(bruto){
       if(!bruto || typeof bruto !== "object") return null;
@@ -473,21 +530,24 @@
       const id = bruto.id != null ? bruto.id : (bruto.ID != null ? bruto.ID : Date.now() + Math.random());
       const precoBruto = bruto.preco ?? bruto.price ?? 0;
       const precoNum = Number(precoBruto) || 0;
-      const imagem =
+      const imagemBase =
         bruto.imagem ||
         bruto.image ||
         (Array.isArray(bruto.gallery) && bruto.gallery.length ? bruto.gallery[0] : "");
       const nome = bruto.nome || bruto.title || "Produto sem nome";
       const descricao = bruto.descricaoCurta || bruto.description || "";
       const detalhes = bruto.detalhes || "";
+      const galeriaRaw = Array.isArray(bruto.gallery) ? bruto.gallery : [];
+      const gallery = galeriaRaw.length ? galeriaRaw : (imagemBase ? [imagemBase] : []);
 
       return {
         id,
         nome,
         preco: precoNum,
-        imagem,
+        imagem: imagemBase,
         descricaoCurta: descricao,
-        detalhes
+        detalhes,
+        gallery
       };
     }
 
@@ -514,6 +574,64 @@
           const grade = document.getElementById("grade-produtos");
           grade.innerHTML = "<p style='font-size:14px;color:#7c6f63;'>Não foi possível carregar os produtos. Verifique o arquivo produtos.json.</p>";
         });
+    }
+
+    // ========= MODAL DE DETALHES =========
+    function abrirDetalhesProduto(idProduto){
+      const produto = produtos.find(p => p.id === idProduto);
+      if(!produto) return;
+      produtoDetalheAtual = produto;
+
+      const modal = document.getElementById("modal-produto");
+      const titulo = document.getElementById("titulo-produto-modal");
+      const preco = document.getElementById("preco-produto-modal");
+      const desc = document.getElementById("descricao-produto-modal");
+      const det = document.getElementById("detalhes-produto-modal");
+      const imgMain = document.getElementById("imagem-produto-principal");
+      const thumbs = document.getElementById("galeria-thumbs");
+
+      titulo.textContent = produto.nome || "";
+      preco.textContent = formatarPreco(produto.preco || 0);
+      desc.textContent = produto.descricaoCurta || "";
+      det.textContent = produto.detalhes || "";
+
+      const imagens = Array.isArray(produto.gallery) && produto.gallery.length ? produto.gallery : (produto.imagem ? [produto.imagem] : []);
+      if(imagens.length){
+        imgMain.src = imagens[0];
+        imgMain.alt = produto.nome || "";
+      } else {
+        imgMain.src = "";
+        imgMain.alt = "";
+      }
+
+      thumbs.innerHTML = "";
+      imagens.forEach((src) => {
+        const t = document.createElement("img");
+        t.src = src;
+        t.alt = produto.nome || "";
+        t.className = "product-modal-thumb";
+        t.addEventListener("click", () => {
+          imgMain.src = src;
+        });
+        thumbs.appendChild(t);
+      });
+
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function fecharModalProduto(){
+      const modal = document.getElementById("modal-produto");
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      produtoDetalheAtual = null;
+    }
+
+    function adicionarDetalheAoCarrinho(){
+      if(!produtoDetalheAtual) return;
+      adicionarAoCarrinho(produtoDetalheAtual.id);
     }
 
     // ========= CARRINHO =========
@@ -628,16 +746,22 @@
       atualizarIconeCarrinho();
       carregarProdutosDoJson();
 
-      // Fecha o modal clicando fora
+      // Fecha os modais clicando fora
       document.getElementById("modal-carrinho").addEventListener("click", (e) => {
         if (e.target.id === "modal-carrinho"){
           fecharCarrinho();
+        }
+      });
+      document.getElementById("modal-produto").addEventListener("click", (e) => {
+        if (e.target.id === "modal-produto"){
+          fecharModalProduto();
         }
       });
 
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape"){
           fecharCarrinho();
+          fecharModalProduto();
         }
       });
     });
