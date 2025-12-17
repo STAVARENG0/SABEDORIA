@@ -40,5 +40,19 @@
     "createdAt": 1765987088769,
     "status": "published",
     "category": "uncategorized"
+  },
+  {
+    "id": "1765988031778",
+    "title": "Placa Decorativa em Madeira com Pirografia – Gato Egípcio com Hieróglifos",
+    "price": 104,
+    "description": "Esta peça artesanal em madeira apresenta a elegante figura de um gato egípcio, inspirada na simbologia do Antigo Egito, gravada manualmente através da técnica da pirografia artística.\n\nO gato, animal sagrado na cultura egípcia, representa proteção, harmonia e energia positiva, enquanto os hieróglifos decorativos ao fundo reforçam o caráter histórico e místico da obra. Cada detalhe foi cuidadosamente queimado à mão, tornando a peça única e exclusiva.\n\nIdeal para decoração de ambientes, estúdios, espaços místicos, escritórios, colecionadores ou amantes da cultura egípcia. A madeira natural traz um acabamento rústico e sofisticado, valorizando ainda mais o trabalho artesanal.",
+    "stock": 1,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1765988031778/Gemini_Generated_Image_tr2h9qtr2h9qtr2h.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1765988031778/Imagem do WhatsApp de 2025-12-17 à(s) 12.23.05_ca662ae7.jpg"
+    ],
+    "createdAt": 1765988049868,
+    "status": "published",
+    "category": "uncategorized"
   }
 ]
