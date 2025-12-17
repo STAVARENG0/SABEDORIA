@@ -164,5 +164,19 @@
     "createdAt": 1765997472568,
     "status": "published",
     "category": "uncategorized"
+  },
+  {
+    "id": "1765998473798",
+    "title": "Corvo – Guardião de Segredos e Sabedoria | Quadro Contemporâneo em Caligrafiti e Spray",
+    "price": 2499,
+    "description": "Corvo – Guardião de Segredos e Sabedoria é uma obra de arte contemporânea que une força simbólica e expressão visual intensa. O corvo, figura central da composição, representa conhecimento oculto, inteligência, transição e vigilância — um arquétipo ancestral presente em diversas culturas como mensageiro entre mundos.\n\nA imagem do corvo é envolvida por caligrafia abstrata, que funciona como um campo simbólico ao redor da figura, reforçando a ideia de proteção, mistério e sabedoria acumulada. Os traços gestuais criam movimento e profundidade, conduzindo o olhar e ampliando a presença da obra.\n\nExecutada em técnica mista de caligrafiti e spray, a peça combina precisão no desenho figurativo com a liberdade da arte urbana, resultando em um trabalho autoral, intenso e sofisticado. A paleta sóbria valoriza o contraste e a dramaticidade, tornando o quadro visualmente impactante e atemporal.\n\nCom dimensões 90 × 70 cm, a obra se destaca como ponto focal do ambiente, ideal para salas, escritórios, estúdios criativos, ambientes contemporâneos ou coleções particulares. É uma peça pensada para quem busca arte com significado, presença e identidade.\n\nTrata-se de uma obra única, criada manualmente, que vai além da decoração: um símbolo de observação, sabedoria e poder silencioso.",
+    "stock": 1,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1765998473798/Gemini_Generated_Image_8l97o58l97o58l97.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1765998473798/Imagem do WhatsApp de 2025-12-17 à(s) 13.37.59_18ab707c.jpg"
+    ],
+    "createdAt": 1765998477510,
+    "status": "published",
+    "category": "uncategorized"
   }
 ]
