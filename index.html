@@ -514,8 +514,6 @@
           <img src="${p.imagem}" alt="${p.nome}" class="product-image" onclick="abrirDetalhesProduto('${p.id}')" />
           <div class="product-body">
             <h3 class="product-title" onclick="abrirDetalhesProduto('${p.id}')" style="cursor:pointer;">${p.nome}</h3>
-            <p class="product-desc">${p.descricaoCurta || ""}</p>
-            <p class="product-meta">${p.detalhes || ""}</p>
             <p class="product-price">${formatarPreco(p.preco)}</p>
           </div>
           <div class="product-footer">
@@ -528,7 +526,8 @@
       });
     }
 
-    function filtrarProdutos(){
+
+(){
       const termo = document.getElementById("busca").value.trim().toLowerCase();
       if (!termo){
         produtosFiltrados = [...produtos];
