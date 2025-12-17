@@ -625,13 +625,6 @@
       });
     }
 
-    function filtrarProdutos(){
-      const termo = document.getElementById("busca").value.trim().toLowerCase();
-      if (!termo){
-        produtosFiltrados = [...produtos];
-      }
-
-
     function atualizarBotaoVoltarInicio(termo){
       const btn = document.getElementById("btn-voltar-inicio");
       if(!btn) return;
@@ -642,19 +635,28 @@
       const input = document.getElementById("busca");
       if(input) input.value = "";
       produtosFiltrados = [...produtos];
-      atualizarBotaoVoltarInicio(termo);
       renderizarProdutos(produtosFiltrados);
       atualizarBotaoVoltarInicio("");
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
- else {
+
+    function filtrarProdutos(){
+      const termo = document.getElementById("busca").value.trim().toLowerCase();
+
+      if (!termo){
+        produtosFiltrados = [...produtos];
+      } else {
         produtosFiltrados = produtos.filter(p =>
           (p.nome || "").toLowerCase().includes(termo) ||
           (p.descricaoCurta || "").toLowerCase().includes(termo)
         );
       }
+
       renderizarProdutos(produtosFiltrados);
+      atualizarBotaoVoltarInicio(termo);
     }
+
+    
 
     // Normaliza tanto o formato do painel (title, price, image, gallery...)
     // quanto o formato simples (nome, preco, imagem...)
@@ -873,10 +875,7 @@
         return `${item.quantidade}x ${item.nome} — Valor + FRETE: ${formatarPreco(totalUnit)}`;
       });
 
-      const mensagem = "Eu vim para adquirir:
-
-" + linhas.join("
-");
+      const mensagem = "Eu vim para adquirir:\n\n" + linhas.join("\n");
       const url = "https://wa.me/" + NUMERO_WHATSAPP + "?text=" + encodeURIComponent(mensagem);
       window.open(url, "_blank");
     }
