@@ -612,8 +612,7 @@
           <img src="${p.imagem}" alt="${p.nome}" class="product-image" onclick="abrirDetalhesProduto('${p.id}')" />
           <div class="product-body">
             <h3 class="product-title" onclick="abrirDetalhesProduto('${p.id}')" style="cursor:pointer;">${p.nome}</h3>
-            <p class="product-price">Valor + FRETE: ${formatarPreco((p.preco||0) + (p.frete||0))}</p>
-            <p class="product-meta">Valor: ${formatarPreco(p.preco||0)} • Frete: ${formatarPreco(p.frete||0)}</p>
+            <p class="product-price">${formatarPreco(p.preco||0)} + FRETE: ${formatarPreco(p.frete||0)}</p>
           </div>
           <div class="product-footer">
             <button class="btn" type="button" onclick="adicionarAoCarrinho('${p.id}')">
@@ -730,7 +729,7 @@
       const thumbs = document.getElementById("galeria-thumbs");
 
       titulo.textContent = produto.nome || "";
-      preco.textContent = "Valor + FRETE: " + formatarPreco((produto.preco || 0) + (produto.frete || 0));
+      preco.textContent = formatarPreco(produto.preco || 0) + " + FRETE: " + formatarPreco(produto.frete || 0);
       desc.textContent = produto.descricaoCurta || "";
       det.textContent = produto.detalhes || "";
 
@@ -833,7 +832,7 @@
             <img src="${item.imagem}" alt="${item.nome}" class="cart-thumb" />
             <div>
               <div style="font-weight:600;">${item.nome}</div>
-              <div style="font-size:12px;color:#7c6f63;">Valor + FRETE: ${formatarPreco((item.preco||0)+(item.frete||0))}</div>
+              <div style="font-size:12px;color:#7c6f63;">${formatarPreco(item.preco||0)} + FRETE: ${formatarPreco(item.frete||0)}</div>
             </div>
           </div>
           <div class="cart-qty-controls">
@@ -870,9 +869,7 @@
         return;
       }
 
-      const linhas = carrinho.map(item => {
-        const totalUnit = (item.preco||0) + (item.frete||0);
-        return `${item.quantidade}x ${item.nome} — Valor + FRETE: ${formatarPreco(totalUnit)}`;
+      const linhas = carrinho.map(item => {        return `${item.quantidade}x ${item.nome} — ${formatarPreco(item.preco||0)} + FRETE: ${formatarPreco(item.frete||0)}`;
       });
 
       const mensagem = "Eu vim para adquirir:\n\n" + linhas.join("\n");
