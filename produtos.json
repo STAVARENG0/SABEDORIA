@@ -80,5 +80,19 @@
     "createdAt": 1765990963247,
     "status": "published",
     "category": "uncategorized"
+  },
+  {
+    "id": "1765992428278",
+    "title": "Pentagrama – Quadro Contemporâneo Ocultista em Caligrafiti",
+    "price": 3229,
+    "description": "Técnica mista de Caligrafiti e spray \n\nObra de arte contemporânea com forte simbologia ocultista, tendo o pentagrama como elemento central da composição. O símbolo surge integrado a uma estrutura caligráfica abstrata, criando uma imagem poderosa, equilibrada e visualmente impactante.\n\nA peça é executada em técnica mista de Caligrafiti e spray, combinando gestualidade caligráfica, camadas de cor e intervenções espontâneas que conferem profundidade, movimento e energia à obra. O contraste cromático e a construção geométrica reforçam o caráter simbólico e ritualístico da composição.\n\nCom dimensões 100 × 100 cm, o quadro possui presença marcante e funciona como ponto focal do ambiente, ideal para espaços contemporâneos, estúdios criativos, escritórios, galerias ou colecionadores que buscam arte com identidade, conceito e força visual.\n\nTrata-se de uma obra única, autoral, criada para quem valoriza simbologia, expressão artística e exclusividade. Não é apenas decoração — é uma peça de afirmação estética e conceitual.\n",
+    "stock": 1,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1765992428278/Gemini_Generated_Image_eax7lveax7lveax7.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1765992428278/Imagem do WhatsApp de 2025-12-17 à(s) 13.37.59_a28aa112.jpg"
+    ],
+    "createdAt": 1765992435315,
+    "status": "published",
+    "category": "uncategorized"
   }
 ]
