@@ -415,7 +415,69 @@
         text-align:center;
       }
     }
-  </style>
+  
+    /* BOTÕES DO TOPO (acima da busca) */
+    .header-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-bottom: 8px;
+    }
+    .header-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 16px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.86);
+      font-size:13px;
+      font-weight:800;
+      cursor:pointer;
+      text-decoration:none;
+      color:#3b2206;
+      box-shadow:0 10px 26px rgba(0,0,0,.10);
+      transition:transform .12s ease, filter .12s ease, background .12s ease, color .12s ease, border-color .12s ease;
+      width:auto;
+    }
+    /* Fica laranjado só ao selecionar (hover/focus/active) */
+    .header-btn:hover,
+    .header-btn:focus-visible{
+      background: linear-gradient(120deg,var(--accent),var(--accent-2));
+      border-color: rgba(0,0,0,0);
+      color:#3b2206;
+      filter:brightness(1.02);
+      transform:translateY(-1px);
+      outline: none;
+    }
+    .header-btn:active{
+      background: linear-gradient(120deg,var(--accent),var(--accent-2));
+      transform:translateY(0);
+      filter:brightness(.98);
+    }
+    /* Remove destaque permanente */
+    .header-btn.primary{
+      background: rgba(255,255,255,.86);
+      border:1px solid rgba(0,0,0,.10);
+      box-shadow:0 10px 26px rgba(0,0,0,.10);
+    }
+    /* Garantir que o botão com .primary também fique laranjado ao selecionar */
+    .header-btn.primary:hover,
+    .header-btn.primary:focus-visible{
+      background: linear-gradient(120deg,var(--accent),var(--accent-2));
+      border-color: rgba(0,0,0,0);
+      color:#3b2206;
+      filter:brightness(1.02);
+      transform:translateY(-1px);
+      outline: none;
+    }
+    .header-btn.primary:active{
+      background: linear-gradient(120deg,var(--accent),var(--accent-2));
+      transform:translateY(0);
+      filter:brightness(.98);
+    }
+</style>
 </head>
 <body>
   <div class="container">
@@ -429,11 +491,24 @@
 
       <div class="header-row">
         <div class="welcome-text">BEM-VINDO À LOJA</div>
-        <form class="search-box" onsubmit="event.preventDefault(); filtrarProdutos();">
+        
+        <div class="header-actions">
+          <a class="header-btn primary" id="btn-divulgue" href="https://wa.me/353877954824?text=Ol%C3%A1%20gostaria%20de%20expor%20meu%20trabalho%20na%20sua%20loja" target="_blank" rel="noopener">
+            Divulgue a sua arte
+          </a>
+          <a class="header-btn" href="politicas-devolucao.html">
+            Políticas de devolução
+          </a>
+        </div>
+<form class="search-box" onsubmit="event.preventDefault(); filtrarProdutos();">
           <input type="text" id="busca" placeholder="Buscar por peça ou tema..." />
           <button type="button" onclick="filtrarProdutos()">Buscar</button>
         </form>
-      </div>
+      
+        <button type="button" class="header-btn" id="btn-voltar-inicio" style="display:none;" onclick="voltarAoInicio()">
+          Voltar ao início
+        </button>
+</div>
     </header>
 
     <main>
@@ -443,7 +518,7 @@
           <!-- A grade é preenchida pelo JavaScript ao ler o JSON -->
         </div>
       </section>
-    </main>
+</main>
 
     <footer>
       © <span id="ano"></span> Artesanato Online — todos os direitos reservados.
@@ -505,6 +580,12 @@
     // ========= CONFIGURAÇÃO BÁSICA =========
     const NUMERO_WHATSAPP = "353877954824"; // seu número, só dígitos, sem + e sem espaços
 
+    const MENSAGEM_DIVULGAR_ARTE = "Olá gostaria de expor meu trabalho na sua loja";
+    function linkDivulgarArte(){
+      const texto = encodeURIComponent(MENSAGEM_DIVULGAR_ARTE);
+      return "https://wa.me/353877954824?text=" + texto;
+    }
+
     let produtos = [];
     let produtosFiltrados = [];
     let carrinho = [];
@@ -531,7 +612,8 @@
           <img src="${p.imagem}" alt="${p.nome}" class="product-image" onclick="abrirDetalhesProduto('${p.id}')" />
           <div class="product-body">
             <h3 class="product-title" onclick="abrirDetalhesProduto('${p.id}')" style="cursor:pointer;">${p.nome}</h3>
-            <p class="product-price">${formatarPreco(p.preco)}</p>
+            <p class="product-price">Valor + FRETE: ${formatarPreco((p.preco||0) + (p.frete||0))}</p>
+            <p class="product-meta">Valor: ${formatarPreco(p.preco||0)} • Frete: ${formatarPreco(p.frete||0)}</p>
           </div>
           <div class="product-footer">
             <button class="btn" type="button" onclick="adicionarAoCarrinho('${p.id}')">
@@ -547,7 +629,25 @@
       const termo = document.getElementById("busca").value.trim().toLowerCase();
       if (!termo){
         produtosFiltrados = [...produtos];
-      } else {
+      }
+
+
+    function atualizarBotaoVoltarInicio(termo){
+      const btn = document.getElementById("btn-voltar-inicio");
+      if(!btn) return;
+      btn.style.display = termo ? "inline-flex" : "none";
+    }
+
+    function voltarAoInicio(){
+      const input = document.getElementById("busca");
+      if(input) input.value = "";
+      produtosFiltrados = [...produtos];
+      atualizarBotaoVoltarInicio(termo);
+      renderizarProdutos(produtosFiltrados);
+      atualizarBotaoVoltarInicio("");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+ else {
         produtosFiltrados = produtos.filter(p =>
           (p.nome || "").toLowerCase().includes(termo) ||
           (p.descricaoCurta || "").toLowerCase().includes(termo)
@@ -563,7 +663,9 @@
 
       const id = bruto.id != null ? bruto.id : (bruto.ID != null ? bruto.ID : Date.now().toString());
       const precoBruto = bruto.preco ?? bruto.price ?? 0;
+      const freteBruto = bruto.frete ?? bruto.shipping ?? bruto.delivery ?? 0;
       const precoNum = Number(precoBruto) || 0;
+      const freteNum = Number(freteBruto) || 0;
       const imagemBase =
         bruto.imagem ||
         bruto.image ||
@@ -578,6 +680,7 @@
         id: String(id),
         nome,
         preco: precoNum,
+        frete: freteNum,
         imagem: imagemBase,
         descricaoCurta: descricao,
         detalhes,
@@ -625,7 +728,7 @@
       const thumbs = document.getElementById("galeria-thumbs");
 
       titulo.textContent = produto.nome || "";
-      preco.textContent = formatarPreco(produto.preco || 0);
+      preco.textContent = "Valor + FRETE: " + formatarPreco((produto.preco || 0) + (produto.frete || 0));
       desc.textContent = produto.descricaoCurta || "";
       det.textContent = produto.detalhes || "";
 
@@ -686,6 +789,7 @@
           id: produto.id,
           nome: produto.nome,
           preco: produto.preco,
+          frete: produto.frete || 0,
           imagem: produto.imagem,
           quantidade: 1
         });
@@ -705,7 +809,7 @@
     }
 
     function calcularTotal(){
-      return carrinho.reduce((s, item) => s + item.preco * item.quantidade, 0);
+      return carrinho.reduce((s, item) => s + ((item.preco||0) + (item.frete||0)) * item.quantidade, 0);
     }
 
     function renderizarCarrinho(){
@@ -727,7 +831,7 @@
             <img src="${item.imagem}" alt="${item.nome}" class="cart-thumb" />
             <div>
               <div style="font-weight:600;">${item.nome}</div>
-              <div style="font-size:12px;color:#7c6f63;">${formatarPreco(item.preco)}</div>
+              <div style="font-size:12px;color:#7c6f63;">Valor + FRETE: ${formatarPreco((item.preco||0)+(item.frete||0))}</div>
             </div>
           </div>
           <div class="cart-qty-controls">
@@ -763,24 +867,34 @@
         alert("Seu carrinho está vazio.");
         return;
       }
-      const linhas = carrinho.map(item =>
-        `${item.quantidade}x ${item.nome} — ${formatarPreco(item.preco)}`
-      );
-      const mensagem =
-        "Eu vim para adquirir:%0A%0A" +
-        linhas.join("%0A");
 
-      const url = "https://wa.me/" + NUMERO_WHATSAPP + "?text=" + mensagem;
+      const linhas = carrinho.map(item => {
+        const totalUnit = (item.preco||0) + (item.frete||0);
+        return `${item.quantidade}x ${item.nome} — Valor + FRETE: ${formatarPreco(totalUnit)}`;
+      });
+
+      const mensagem = "Eu vim para adquirir:
+
+" + linhas.join("
+");
+      const url = "https://wa.me/" + NUMERO_WHATSAPP + "?text=" + encodeURIComponent(mensagem);
       window.open(url, "_blank");
     }
+
+
 
     // ========= INIT =========
     document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("ano").textContent = new Date().getFullYear();
+      const btnDivulgue = document.getElementById("btn-divulgue");
+      if(btnDivulgue){ btnDivulgue.href = linkDivulgarArte(); }
       atualizarIconeCarrinho();
       carregarProdutosDoJson();
 
-      // Fecha os modais clicando fora
+      
+      const buscaInit = document.getElementById("busca");
+      atualizarBotaoVoltarInicio(buscaInit ? buscaInit.value.trim() : "");
+// Fecha os modais clicando fora
       const modalCarrinho = document.getElementById("modal-carrinho");
       if(modalCarrinho){
         modalCarrinho.addEventListener("click", (e) => {
@@ -812,6 +926,9 @@
     window.adicionarAoCarrinho = adicionarAoCarrinho;
     window.alterarQuantidade = alterarQuantidade;
     window.comprarAgoraWhatsApp = comprarAgoraWhatsApp;
-  </script>
+    window.linkDivulgarArte = linkDivulgarArte;
+  
+    window.voltarAoInicio = voltarAoInicio;
+</script>
 </body>
 </html>
