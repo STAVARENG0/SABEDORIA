@@ -122,5 +122,19 @@
     "createdAt": 1765995551819,
     "status": "published",
     "category": "uncategorized"
+  },
+  {
+    "id": "1765996437422",
+    "title": "Ganesha – Prosperidade e Sabedoria | Quadro Contemporâneo em Caligrafiti e Spray",
+    "price": 1290,
+    "description": "Ganesha é uma obra de arte contemporânea inspirada nos símbolos do hinduísmo, representando o deus da prosperidade, sabedoria e remoção de obstáculos. A figura surge construída por meio de caligrafia abstrata, onde os traços formam o rosto de Ganesha de maneira simbólica e expressiva.\n\nExecutada em técnica mista de Caligrafiti e spray, a obra combina camadas translúcidas, gestos livres e contrastes cromáticos que criam profundidade, movimento e energia visual. As cores evocam equilíbrio espiritual e expansão, reforçando o significado de abundância e proteção.\n\nCom dimensões 50 × 60 cm, o quadro possui presença marcante e se adapta com facilidade a diferentes ambientes. Ideal para salas, espaços de meditação, estúdios, consultórios, ambientes contemporâneos ou coleções particulares, trazendo significado espiritual aliado à estética urbana e autoral.\n\nTrata-se de uma obra única, criada manualmente, que une arte contemporânea, espiritualidade e simbolismo, perfeita para quem busca um elemento visual que vá além da decoração e carregue intenção e propósito.",
+    "stock": 1,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1765996437422/Gemini_Generated_Image_skdfwgskdfwgskdf.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1765996437422/Captura de tela 2025-12-17 183012.png"
+    ],
+    "createdAt": 1765996441116,
+    "status": "published",
+    "category": "uncategorized"
   }
 ]
