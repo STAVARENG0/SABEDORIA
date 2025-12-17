@@ -10,5 +10,17 @@
     "createdAt": 1765931360648,
     "status": "published",
     "category": "uncategorized"
+  },
+  {
+    "id": "1765931542107",
+    "title": "PEÇAS ARTESANAIS EM MADEIRA COM PIROGRAFIA",
+    "price": 82,
+    "description": "PEÇAS ARTESANAIS EM MADEIRA COM PIROGRAFIA (DESENHO QUEIMADO), FEITAS À MÃO COM ARABESCOS FLORAIS RICOS EM DETALHES E SOMBREAMENTO, TRAZENDO UM VISUAL RÚSTICO E ELEGANTE. CADA PLACA É ÚNICA, COM ACABAMENTO ARTÍSTICO E ASSINATURA DO ARTESÃO, IDEAL PARA DECORAÇÃO, PRESENTE PERSONALIZADO OU PARA COMPOR AMBIENTES COM ESTILO.",
+    "stock": 3,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1765931542107/Imagem do WhatsApp de 2025-12-16 à(s) 19.35.57_be143742.jpg",
+    "gallery": [],
+    "createdAt": 1765931543676,
+    "status": "published",
+    "category": "uncategorized"
   }
 ]
