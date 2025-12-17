@@ -703,7 +703,10 @@
             produtos = [];
           } else {
             produtos = data.map(normalizarProduto).filter(Boolean);
-          }
+          
+            // Mostra os mais recentes primeiro (últimos do JSON aparecem na frente)
+            produtos = produtos.slice().reverse();
+}
           produtosFiltrados = [...produtos];
           renderizarProdutos(produtosFiltrados);
         })
