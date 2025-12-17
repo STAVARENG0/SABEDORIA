@@ -94,5 +94,19 @@
     "createdAt": 1765992435315,
     "status": "published",
     "category": "uncategorized"
+  },
+  {
+    "id": "1765993046031",
+    "title": "Portal Caligrafitti – Quadro Contemporâneo",
+    "price": 599,
+    "description": "Portal Caligrafitti é uma obra de arte contemporânea que explora a caligrafia como forma, movimento e energia visual. A composição cria a sensação de um portal em expansão, onde os traços se repetem, se sobrepõem e conduzem o olhar para o centro da obra.\n\nExecutada em técnica mista de caligrafiti e spray, a peça combina gestualidade manual, camadas de cor e textura, resultando em profundidade e ritmo visual. O contraste entre os tons quentes e frios reforça a ideia de passagem, fluxo e transformação, dando à obra um caráter dinâmico e hipnótico.\n\nCom dimensões 40 × 50 cm, o quadro possui presença marcante mesmo em formatos menores, sendo ideal para ambientes contemporâneos, escritórios, estúdios criativos, coleções particulares ou composições em parede.\n\nTrata-se de uma obra autoral e única, pensada para quem valoriza arte urbana contemporânea, linguagem caligráfica e exclusividade. Uma peça que não apenas decora, mas cria atmosfera e identidade no espaço.",
+    "stock": 1,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1765993046031/Gemini_Generated_Image_udpduqudpduqudpd.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1765993046031/Imagem do WhatsApp de 2025-12-17 à(s) 13.45.00_1e00aac7.jpg"
+    ],
+    "createdAt": 1765993051205,
+    "status": "published",
+    "category": "uncategorized"
   }
 ]
