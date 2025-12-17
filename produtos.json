@@ -26,5 +26,19 @@
     "createdAt": 1765986941570,
     "status": "published",
     "category": "uncategorized"
+  },
+  {
+    "id": "1765987082583",
+    "title": "Placa Decorativa em Madeira com Pirografia Ornamental Artesanal",
+    "price": 129.99,
+    "description": "Esta peça é uma obra de arte artesanal em pirografia ornamental, feita à mão sobre madeira natural. O desenho apresenta arabescos clássicos, com linhas fluidas e simétricas, queimadas cuidadosamente para criar profundidade, contraste e sofisticação.\n\nSem palavras, a arte se destaca pela elegância dos detalhes, valorizando o trabalho manual e o estilo artístico atemporal. Cada curva foi executada de forma única, tornando a peça exclusiva e impossível de ser reproduzida exatamente igual.\n\nIdeal para decoração de interiores, salas, corredores, escritórios, estúdios, espaços rústicos ou contemporâneos. Também é uma excelente opção para quem busca arte decorativa neutra, que combine com qualquer ambiente.\n\n✨ Diferenciais do produto:\n\nArte ornamental em pirografia\n\nDesenho artesanal feito à mão\n\nEstilo clássico e elegante\n\nPeça única e exclusiva\n\nMadeira natural com acabamento artístico\n\nUma peça perfeita para quem valoriza arte, detalhe e autenticidade, trazendo personalidade e sofisticação ao ambiente sem precisar de palavras.",
+    "stock": 1,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1765987082583/Gemini_Generated_Image_qhw1rpqhw1rpqhw1.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1765987082583/Imagem do WhatsApp de 2025-12-17 à(s) 13.09.16_0a80cf25.jpg"
+    ],
+    "createdAt": 1765987088769,
+    "status": "published",
+    "category": "uncategorized"
   }
 ]
