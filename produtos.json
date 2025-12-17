@@ -108,5 +108,19 @@
     "createdAt": 1765993051205,
     "status": "published",
     "category": "uncategorized"
+  },
+  {
+    "id": "1765995548496",
+    "title": "Wild and Free – Espírito do Lobo | Quadro Contemporâneo em Caligrafiti e Spray",
+    "price": 2399,
+    "description": "Wild and Free – Espírito do Lobo é uma obra de arte contemporânea que une caligrafiti expressivo e spray para representar a força, a liberdade e a essência instintiva do lobo. A figura central, em posição de uivo, simboliza independência, coragem e conexão com a própria natureza.\n\nA tipografia caligráfica, integrada ao desenho, amplia a sensação de movimento e intensidade, criando uma composição impactante e cheia de personalidade. O contraste entre traço preciso e gestualidade livre reforça o caráter urbano e autoral da obra.\n\nCom dimensões 90 × 70 cm, o quadro possui presença marcante e se torna ponto focal em qualquer ambiente. Ideal para salas, escritórios, estúdios criativos, espaços contemporâneos ou coleções particulares, é uma peça pensada para quem se identifica com liberdade, autenticidade e expressão artística forte.\n\nEsta é uma obra única, criada manualmente, que vai além da decoração: comunica atitude, identidade e espírito livre.",
+    "stock": 1,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1765995548496/Gemini_Generated_Image_gmpfrqgmpfrqgmpf.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1765995548496/Imagem do WhatsApp de 2025-12-17 à(s) 13.38.00_f242795f.jpg"
+    ],
+    "createdAt": 1765995551819,
+    "status": "published",
+    "category": "uncategorized"
   }
 ]
