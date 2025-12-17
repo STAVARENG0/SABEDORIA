@@ -136,7 +136,7 @@
       display:flex;
       flex-direction:column;
     }
-    .product-image{width:100%;aspect-ratio:4/3;object-fit:contain;display:block;background:#f7f1e4;padding:6px;}
+    .product-image{width:100%;height:220px;object-fit:contain;display:block;background:#f7f1e4;padding:6px;}
     .product-body{
       padding:12px 14px 10px;
       flex:1;
@@ -316,15 +316,30 @@
       color:#7c6f63;
       margin-bottom:6px;
     }
+    .product-modal-content{
+      max-width:780px;
+    }
     .product-modal-main{
       margin:10px 0;
       display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+    }
+    .product-modal-left{
+      flex:1 1 260px;
+      min-width:0;
+    }
+    .product-modal-right{
+      flex:1 1 260px;
+      min-width:0;
+      display:flex;
       flex-direction:column;
-      gap:10px;
+      gap:6px;
+      justify-content:flex-start;
     }
     .product-modal-image-main{
       width:100%;
-      max-height:340px;
+      max-height:360px;
       object-fit:contain;
       background:#f7f1e4;
       border-radius:12px;
@@ -332,6 +347,7 @@
       padding:8px;
     }
     .product-modal-thumbs{
+      margin-top:8px;
       display:flex;
       gap:8px;
       overflow-x:auto;
@@ -350,13 +366,17 @@
     .product-modal-text{
       font-size:13px;
       color:#5c4b36;
-      margin:8px 0 12px;
     }
     .product-modal-price{
       font-weight:700;
-      font-size:16px;
+      font-size:18px;
       color:var(--accent-dark);
-      margin-top:4px;
+      margin-bottom:4px;
+    }
+    @media (max-width:720px){
+      .product-modal-main{
+        flex-direction:column;
+      }
     }
 
     footer{
@@ -403,6 +423,7 @@
       <section class="shop-section" aria-labelledby="titulo-loja">
         <div class="shop-header">
           <h2 id="titulo-loja">Coleção Artesanato Online</h2>
+          <p>Os produtos aparecem aqui assim que o arquivo <strong>produtos.json</strong> é carregado.</p>
         </div>
 
         <div class="product-grid" id="grade-produtos">
@@ -444,26 +465,28 @@
     </div>
   </div>
 
-
   <!-- MODAL DE DETALHES DO PRODUTO -->
   <div class="modal" id="modal-produto" aria-hidden="true">
-    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="titulo-produto-modal">
+    <div class="modal-content product-modal-content" role="dialog" aria-modal="true" aria-labelledby="titulo-produto-modal">
       <button class="modal-close" type="button" onclick="fecharModalProduto()">×</button>
-      <h2 id="titulo-produto-modal"></h2>
-      <p class="product-modal-price" id="preco-produto-modal"></p>
       <div class="product-modal-main">
-        <img id="imagem-produto-principal" class="product-modal-image-main" src="" alt="" />
-        <div class="product-modal-thumbs" id="galeria-thumbs"></div>
+        <div class="product-modal-left">
+          <img id="imagem-produto-principal" class="product-modal-image-main" src="" alt="" />
+          <div class="product-modal-thumbs" id="galeria-thumbs"></div>
+        </div>
+        <div class="product-modal-right">
+          <h2 id="titulo-produto-modal"></h2>
+          <p class="product-modal-price" id="preco-produto-modal"></p>
+          <p id="descricao-produto-modal" class="product-modal-text"></p>
+          <p id="detalhes-produto-modal" class="product-modal-text"></p>
+          <button class="btn" type="button" onclick="adicionarDetalheAoCarrinho()">
+            Adicionar ao carrinho
+          </button>
+        </div>
       </div>
-      <div class="product-modal-text">
-        <p id="descricao-produto-modal"></p>
-        <p id="detalhes-produto-modal"></p>
-      </div>
-      <button class="btn" type="button" onclick="adicionarDetalheAoCarrinho()">
-        Adicionar ao carrinho
-      </button>
     </div>
   </div>
+
 
   <script>
     // ========= CONFIGURAÇÃO BÁSICA =========
@@ -492,15 +515,15 @@
         const card = document.createElement("article");
         card.className = "product-card";
         card.innerHTML = `
-          <img src="${p.imagem}" alt="${p.nome}" class="product-image" onclick="abrirDetalhesProduto(${p.id})" />
+          <img src="${p.imagem}" alt="${p.nome}" class="product-image" onclick="abrirDetalhesProduto('${p.id}')" />
           <div class="product-body">
-            <h3 class="product-title" onclick="abrirDetalhesProduto(${p.id})" style="cursor:pointer;">${p.nome}</h3>
+            <h3 class="product-title" onclick="abrirDetalhesProduto('${p.id}')" style="cursor:pointer;">${p.nome}</h3>
             <p class="product-desc">${p.descricaoCurta || ""}</p>
             <p class="product-meta">${p.detalhes || ""}</p>
             <p class="product-price">${formatarPreco(p.preco)}</p>
           </div>
           <div class="product-footer">
-            <button class="btn" type="button" onclick="adicionarAoCarrinho(${p.id})">
+            <button class="btn" type="button" onclick="adicionarAoCarrinho('${p.id}')">
               Adicionar ao carrinho
             </button>
           </div>
@@ -527,7 +550,7 @@
     function normalizarProduto(bruto){
       if(!bruto || typeof bruto !== "object") return null;
 
-      const id = bruto.id != null ? bruto.id : (bruto.ID != null ? bruto.ID : Date.now() + Math.random());
+      const id = bruto.id != null ? bruto.id : (bruto.ID != null ? bruto.ID : Date.now().toString());
       const precoBruto = bruto.preco ?? bruto.price ?? 0;
       const precoNum = Number(precoBruto) || 0;
       const imagemBase =
@@ -541,7 +564,7 @@
       const gallery = galeriaRaw.length ? galeriaRaw : (imagemBase ? [imagemBase] : []);
 
       return {
-        id,
+        id: String(id),
         nome,
         preco: precoNum,
         imagem: imagemBase,
@@ -578,7 +601,7 @@
 
     // ========= MODAL DE DETALHES =========
     function abrirDetalhesProduto(idProduto){
-      const produto = produtos.find(p => p.id === idProduto);
+      const produto = produtos.find(p => p.id == idProduto);
       if(!produto) return;
       produtoDetalheAtual = produto;
 
@@ -641,10 +664,10 @@
     }
 
     function adicionarAoCarrinho(idProduto){
-      const produto = produtos.find(p => p.id === idProduto);
+      const produto = produtos.find(p => p.id == idProduto);
       if (!produto) return;
 
-      const existente = carrinho.find(item => item.id === idProduto);
+      const existente = carrinho.find(item => item.id == idProduto);
       if (existente){
         existente.quantidade += 1;
       } else {
@@ -660,11 +683,11 @@
     }
 
     function alterarQuantidade(idProduto, delta){
-      const item = carrinho.find(i => i.id === idProduto);
+      const item = carrinho.find(i => i.id == idProduto);
       if (!item) return;
       item.quantidade += delta;
       if (item.quantidade <= 0){
-        carrinho = carrinho.filter(i => i.id !== idProduto);
+        carrinho = carrinho.filter(i => i.id != idProduto);
       }
       atualizarIconeCarrinho();
       renderizarCarrinho();
@@ -697,9 +720,9 @@
             </div>
           </div>
           <div class="cart-qty-controls">
-            <button type="button" onclick="alterarQuantidade(${item.id}, -1)">−</button>
+            <button type="button" onclick="alterarQuantidade('${item.id}', -1)">−</button>
             <span>${item.quantidade}</span>
-            <button type="button" onclick="alterarQuantidade(${item.id}, 1)">+</button>
+            <button type="button" onclick="alterarQuantidade('${item.id}', 1)">+</button>
           </div>
         `;
         container.appendChild(linha);
@@ -747,16 +770,22 @@
       carregarProdutosDoJson();
 
       // Fecha os modais clicando fora
-      document.getElementById("modal-carrinho").addEventListener("click", (e) => {
-        if (e.target.id === "modal-carrinho"){
-          fecharCarrinho();
-        }
-      });
-      document.getElementById("modal-produto").addEventListener("click", (e) => {
-        if (e.target.id === "modal-produto"){
-          fecharModalProduto();
-        }
-      });
+      const modalCarrinho = document.getElementById("modal-carrinho");
+      if(modalCarrinho){
+        modalCarrinho.addEventListener("click", (e) => {
+          if (e.target.id === "modal-carrinho"){
+            fecharCarrinho();
+          }
+        });
+      }
+      const modalProduto = document.getElementById("modal-produto");
+      if(modalProduto){
+        modalProduto.addEventListener("click", (e) => {
+          if (e.target.id === "modal-produto"){
+            fecharModalProduto();
+          }
+        });
+      }
 
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape"){
@@ -765,6 +794,13 @@
         }
       });
     });
+
+    // Deixa funções acessíveis no escopo global (para os onClick do HTML)
+    window.abrirDetalhesProduto = abrirDetalhesProduto;
+    window.fecharModalProduto = fecharModalProduto;
+    window.adicionarAoCarrinho = adicionarAoCarrinho;
+    window.alterarQuantidade = alterarQuantidade;
+    window.comprarAgoraWhatsApp = comprarAgoraWhatsApp;
   </script>
 </body>
 </html>
