@@ -1,17 +1,5 @@
 [
   {
-    "id": "1765927398171",
-    "title": "ARTE FARAO ",
-    "price": 50,
-    "description": "ARTE BONITONA ",
-    "stock": 5,
-    "image": "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1765927398171/IMG-20251205-WA0089.jpg",
-    "gallery": [],
-    "createdAt": 1765927400942,
-    "status": "published",
-    "category": "uncategorized"
-  },
-  {
     "id": "1765928194328",
     "title": "ARTES",
     "price": 12,
