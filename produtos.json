@@ -220,5 +220,19 @@
     "createdAt": 1766348896281,
     "status": "published",
     "category": "uncategorized"
+  },
+  {
+    "id": "1766349075358",
+    "title": "Porta-chaves artesanal em madeira com duas casinhas pintadas à mão",
+    "price": 129,
+    "description": "Porta-chaves artesanal feito 100% à mão em madeira, com duas casinhas em tons de azul e roxo, pintadas manualmente e aplicadas sobre uma base artística que remete ao céu, criando uma composição charmosa e acolhedora. Cada detalhe é único, valorizando o trabalho artesanal e tornando a peça exclusiva. Além de decorar, organiza suas chaves com praticidade, trazendo funcionalidade e beleza para a entrada da casa. Ideal para quem busca decoração com personalidade ou um presente especial, feito com cuidado, arte e significado. Peça de produção limitada, perfeita para transformar pequenos espaços com delicadeza e estilo.",
+    "stock": 1,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1766349075358/Gemini_Generated_Image_cv0oqlcv0oqlcv0o.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1766349075358/WhatsApp Image 2025-12-18 at 22.21.02.jpeg"
+    ],
+    "createdAt": 1766349081914,
+    "status": "published",
+    "category": "uncategorized"
   }
 ]
