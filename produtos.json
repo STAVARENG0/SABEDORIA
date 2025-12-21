@@ -290,5 +290,19 @@
     "createdAt": 1766353382008,
     "status": "published",
     "category": "uncategorized"
+  },
+  {
+    "id": "1766353598484",
+    "title": "Porta-chaves artesanal em madeira com casinha e balões decorativos pintados à mão",
+    "price": 130,
+    "description": "Porta-chaves artesanal feito 100% à mão em madeira, com composição criativa de uma casinha delicada sendo “levada” por balões coloridos, simbolizando sonhos, leveza e novos caminhos. Cada detalhe é cuidadosamente trabalhado e pintado à mão, resultando em uma peça única, cheia de significado e personalidade. Além de funcional, este porta-chaves transforma a entrada da casa em um espaço acolhedor e inspirador, mantendo suas chaves organizadas com charme. Ideal para quem ama decoração artesanal, peças criativas e presentes com emoção. Produção limitada, perfeita para levar arte, imaginação e afeto ao seu dia a dia.",
+    "stock": 1,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1766353598484/Gemini_Generated_Image_cl3bwccl3bwccl3b.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1766353598484/2222222.jpeg"
+    ],
+    "createdAt": 1766353610156,
+    "status": "published",
+    "category": "uncategorized"
   }
 ]
