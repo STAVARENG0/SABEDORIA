@@ -192,5 +192,19 @@
     "createdAt": 1766347619005,
     "status": "published",
     "category": "uncategorized"
+  },
+  {
+    "id": "1766348154451",
+    "title": "Pequenas casas, grandes encantos – Porta-chaves artesanal ",
+    "price": 195,
+    "description": "Porta-chaves artesanal feito 100% à mão em madeira, com design exclusivo de casinhas em tons de azul, lilás e detalhes florais, criado para transformar a entrada da sua casa em um espaço acolhedor e cheio de personalidade. Cada peça é única, cuidadosamente pintada à mão, o que torna este porta-chaves uma decoração especial e cheia de significado. Além de organizar suas chaves com praticidade, ele transmite sensação de lar, cuidado e afeto, sendo perfeito para quem valoriza produtos artesanais e feitos com carinho. Ideal para presentear ou para dar um toque único à sua casa, esta é uma peça diferenciada, de produção limitada — garanta a sua e leve charme e exclusividade para o seu dia a dia.",
+    "stock": 1,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1766348154451/Gemini_Generated_Image_2ulvni2ulvni2ulv.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1766348154451/343343.jpeg"
+    ],
+    "createdAt": 1766348175152,
+    "status": "published",
+    "category": "uncategorized"
   }
 ]
