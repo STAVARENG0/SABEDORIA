@@ -276,5 +276,19 @@
     "createdAt": 1766352833170,
     "status": "published",
     "category": "uncategorized"
+  },
+  {
+    "id": "1766353376465",
+    "title": "Porta-chaves artesanal em madeira com pintura de lavanda feito à mão",
+    "price": 115,
+    "description": "Porta-chaves artesanal feito 100% à mão em madeira, com delicada pintura de lavanda em tons suaves, transmitindo calma, aconchego e elegância. Inspirado na natureza e no estilo provençal, cada detalhe é cuidadosamente trabalhado, tornando a peça única e cheia de charme. Além de funcional, organiza suas chaves com praticidade e acrescenta um toque acolhedor e artesanal à entrada da casa, cozinha ou corredor. Ideal para quem aprecia decoração delicada, natural e feita com carinho, também é uma excelente opção de presente especial e afetivo. Peça de produção limitada, criada para trazer beleza, harmonia e personalidade ao seu espaço.",
+    "stock": 1,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1766353376465/Gemini_Generated_Image_a21ywna21ywna21y.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1766353376465/33333.jpeg"
+    ],
+    "createdAt": 1766353382008,
+    "status": "published",
+    "category": "uncategorized"
   }
 ]
