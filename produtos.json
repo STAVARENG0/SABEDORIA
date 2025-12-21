@@ -178,5 +178,19 @@
     "createdAt": 1765998477510,
     "status": "published",
     "category": "uncategorized"
+  },
+  {
+    "id": "1766347591129",
+    "title": "Porta-chaves artesanal em madeira",
+    "price": 195,
+    "description": "orta-chaves artesanal feito 100% à mão em madeira, criado para quem valoriza exclusividade, aconchego e bom gosto. Inspirado em pequenas casinhas que simbolizam lar e acolhimento, cada peça é pintada manualmente, tornando-se única. Além de decorar, ajuda a manter suas chaves sempre organizadas e à vista, trazendo praticidade para a rotina. É o detalhe perfeito para a entrada da casa e uma excelente opção de presente afetivo e original. Edição limitada, ideal para transformar seu ambiente com charme artesanal — garanta o seu e leve mais personalidade para o seu dia a dia.",
+    "stock": 1,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1766347591129/Gemini_Generated_Image_rgb4e4rgb4e4rgb4.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1766347591129/33434.jpeg"
+    ],
+    "createdAt": 1766347619005,
+    "status": "published",
+    "category": "uncategorized"
   }
 ]
