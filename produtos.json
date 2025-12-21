@@ -304,5 +304,19 @@
     "createdAt": 1766353610156,
     "status": "published",
     "category": "uncategorized"
+  },
+  {
+    "id": "1766354064126",
+    "title": "Placa decorativa em madeira com pirografia egípcia do escaravelho alado",
+    "price": 195,
+    "description": "Placa decorativa artesanal feita 100% à mão em madeira natural, com pirogravura (pirografia) inspirada na simbologia do Egito Antigo. O escaravelho alado, cuidadosamente queimado na madeira, representa proteção, renascimento e força espiritual, tornando a peça rica em significado e impacto visual. Cada traço é realizado manualmente com fogo, garantindo um acabamento único e exclusivo, onde nenhuma peça é igual à outra. Ideal para decoração com estilo místico, cultural ou espiritual, essa obra une arte, história e técnica artesanal tradicional. Uma excelente opção para quem aprecia pirografia, arte simbólica ou busca um presente marcante e cheio de identidade. Produção limitada, feita com propósito, cuidado e alma.",
+    "stock": 1,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1766354064126/Gemini_Generated_Image_q1jwauq1jwauq1jw.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/SABEDORIA/main/products/1766354064126/WhatsApp Image 2025-12-21 at 12.44.23.jpeg"
+    ],
+    "createdAt": 1766354076502,
+    "status": "published",
+    "category": "uncategorized"
   }
 ]
